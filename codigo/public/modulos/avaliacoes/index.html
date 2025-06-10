@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PetMatch - Avaliações</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+    }
+
+    header {
+      background: linear-gradient(to right, #ffd700, #f7b500);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .search input {
+      padding: 8px 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .search button {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    main {
+      display: flex;
+      height: 100vh;
+    }
+
+    aside {
+      width: 240px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: 1px solid #ddd;
+    }
+
+    .perfil img {
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+    }
+
+    .perfil p {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .perfil span {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .perfil a {
+      margin-top: 10px;
+      background: #ffd700;
+      padding: 6px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    nav {
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      background-color: #eee;
+    }
+
+    .sair {
+      margin-top: auto;
+      background: red;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      font-weight: bold;
+      width: 100%;
+      text-decoration: none;
+    }
+
+    section {
+      flex: 1;
+      padding: 30px;
+      background-color: #fff;
+      overflow-y: auto;
+    }
+
+    .avaliacoes {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .avaliacoes h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .nota-media {
+      font-size: 36px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .estrelas i {
+      color: gold;
+      font-size: 24px;
+    }
+
+    .barras {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .barra {
+      display: flex;
+      align-items: center;
+      margin: 4px 0;
+      gap: 8px;
+    }
+
+    .barra span {
+      width: 30px;
+    }
+
+    .progress {
+      flex: 1;
+      background-color: #eee;
+      height: 12px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress div {
+      height: 100%;
+      background-color: gold;
+    }
+
+    .form-avaliacao {
+      margin-top: 30px;
+    }
+
+    .form-avaliacao textarea {
+      width: 100%;
+      height: 100px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    .form-avaliacao button {
+      margin-top: 10px;
+      padding: 10px 16px;
+      background-color: #00b3b3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .comentarios {
+      margin-top: 40px;
+    }
+
+    .comentario {
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .comentario strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .comentario p {
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">PETMATCH</div>
+    <div class="search">
+      <input type="text" placeholder="Pesquisa" />
+      <button><i class="fas fa-search"></i></button>
+    </div>
+  </header>
+  <main>
+    <aside>
+      <div class="perfil">
+        <img src="https://via.placeholder.com/60" alt="Ricardão">
+        <p>Ricardão</p>
+        <span><i class="fas fa-star" style="color:gold;"></i> 5.0</span>
+        <a href="#">Perfil <i class="fas fa-pen"></i></a>
+      </div>
+      <nav>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-compass"></i> Explorar</a>
+        <a href="#"><i class="fas fa-list"></i> Categorias</a>
+        <a href="#"><i class="fas fa-heart"></i> Favoritos</a>
+      </nav>
+      <a class="sair" href="#">SAIR</a>
+    </aside>
+    <section>
+      <div class="avaliacoes">
+        <div>
+          <h2>Avaliações</h2>
+          <p class="nota-media">4.8 
+            <span class="estrelas">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </span>
+          </p>
+          <div class="barras">
+            <div class="barra"><span>5 ⭐</span><div class="progress"><div style="width: 70%"></div></div>7.000</div>
+            <div class="barra"><span>4 ⭐</span><div class="progress"><div style="width: 15%"></div></div>1.500</div>
+            <div class="barra"><span>3 ⭐</span><div class="progress"><div style="width: 7%"></div></div>700</div>
+            <div class="barra"><span>2 ⭐</span><div class="progress"><div style="width: 3%"></div></div>300</div>
+            <div class="barra"><span>1 ⭐</span><div class="progress"><div style="width: 5%"></div></div>500</div>
+          </div>
+        </div>
+        <div style="max-width: 320px;">
+          <strong> Avalie sua experiência com o PetMatch!</strong>
+          <p style="font-size: 14px; margin-top: 10px;">Sua opinião é muito importante para nós! <br>Se você já adotou um pet, apadrinhou ou simplesmente se encantou com a nossa plataforma, que tal compartilhar sua experiência?</p>
+          <button style="margin-top: 10px; padding: 10px 15px; background-color: #00b3b3; color: white; border: none; border-radius: 5px; font-weight: bold;">Avalie~nos!</button>
+        </div>
+      </div>
+
+      <div class="form-avaliacao">
+        <textarea id="comentario" placeholder="Deixe seu comentário..."></textarea>
+        <button onclick="adicionarComentario()">Enviar Avaliação</button>
+      </div>
+
+      <div class="comentarios" id="comentarios">
+        <div class="comentario">
+          <strong>Larissa Albuquerque</strong>
+          <span class="estrelas">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </span>
+          <p>Adotamos o Max há um ano e ele trouxe muita alegria para a casa!</p>
+        </div>
+        <div class="comentario">
+          <strong>Marcos Siqueira</strong>
+          <span class="estrelas">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </span>
+          <p>Bob é um cão maravilhoso! Estou muito feliz com a adoção.</p>
+        </div>
+        <div class="comentario">
+          <strong>Guilherme Santana</strong>
+          <span class="estrelas">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </span>
+          <p>Amor à primeira vista. PetMatch é incrível na hora da adoção.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    function adicionarComentario() {
+      const texto = document.getElementById('comentario').value;
+      if (texto.trim() === '') return;
+
+      const container = document.getElementById('comentarios');
+      const novo = document.createElement('div');
+      novo.classList.add('comentario');
+      novo.innerHTML = `
+        <strong>Você</strong>
+        <span class="estrelas">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </span>
+        <p>${texto}</p>
+      `;
+      container.prepend(novo);
+      document.getElementById('comentario').value = '';
+    }
+  </script>
+</body>
+</html>
